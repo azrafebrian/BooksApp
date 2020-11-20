@@ -25,14 +25,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        textTitle=findViewById(R.id.textTitle);
-        textAuthor=findViewById(R.id.textAuthor);
-        textDesc=findViewById(R.id.textDesc);
-        imageCover=findViewById(R.id.imageCover);
+        textTitle = findViewById(R.id.textTitle);
+        textAuthor = findViewById(R.id.textAuthor);
+        textDesc = findViewById(R.id.textDesc);
+        imageCover = findViewById(R.id.imageCover);
 
-        Intent intent=getIntent();
-        if(intent.hasExtra("DATA")){
-            data=intent.getParcelableExtra("DATA");
+        Intent intent = getIntent();
+        if (intent.hasExtra("DATA")) {
+            data = intent.getParcelableExtra("DATA");
             textTitle.setText(data.itemTitle);
             textAuthor.setText(data.itemAuthor);
             textDesc.setText(data.itemDescription);
@@ -40,20 +40,21 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    private class LoadImage extends AsyncTask<String,Void, Bitmap>{
+    private class LoadImage extends AsyncTask<String, Void, Bitmap> {
         private ImageView imageView;
-        public LoadImage(ImageView imageView){
-            this.imageView=imageView;
+
+        public LoadImage(ImageView imageView) {
+            this.imageView = imageView;
         }
 
         @Override
         protected Bitmap doInBackground(String... strings) {
-            URL url=null;
-            Bitmap bitmap=null;
+            URL url = null;
+            Bitmap bitmap = null;
 
             try {
-                url=new URL(strings[0]);
-                bitmap= BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                url = new URL(strings[0]);
+                bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             } catch (IOException e) {
                 e.printStackTrace();
             }

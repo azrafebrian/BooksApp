@@ -9,7 +9,7 @@ public class ItemData implements Parcelable {
     public String itemImage;
     public String itemDescription;
 
-    public ItemData(){
+    public ItemData() {
 
     }
 
